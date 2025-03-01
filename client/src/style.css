@@ -1,0 +1,72 @@
+@import "tailwindcss";
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #161515;
+    color: white;
+}
+#container{
+    background-color: black;
+    color: white;
+}
+#container .ql-editor{
+    width: 100%;
+    min-height: 7in;
+    /* padding: 1in; */
+    /* margin: 0.5rem; */
+}
+
+#container.ql-container.ql-snow{
+    border-color: gray;
+    border-width: 0.20rem;
+    display: flex;
+    align-items: center;
+    /* margin-top: 5rem; */
+}
+.ql-toolbar.ql-snow{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    font-size: 2rem;
+    z-index: 1;
+    color: white;
+    background-color: #808080;
+
+}
+@page{
+    margin: 1rem;
+
+}
+@media print {
+    body {
+        background: none !important; /* Ensure white background */
+        color: #000000 !important;  /* Force pure black text */
+        -webkit-print-color-adjust: exact !important; /* Ensures print fidelity */
+        print-color-adjust: exact !important; /* Modern alternative */
+    }
+    
+    .navbar {
+        display: none !important;
+    }
+    
+    .ql-toolbar.ql-snow {
+        display: none !important; /* Hide the toolbar */
+    }
+    
+    .ql-container.ql-snow {
+        width: 6.5in;
+        height: 7in;
+        border: none !important;
+        color: #000000 !important; /* Force black text */
+        background: #ffffff !important; /* Ensure white background */
+    }
+    
+    .ql-editor {
+        color: #000000 !important; /* Make sure text is fully black */
+    }
+}
