@@ -3,7 +3,7 @@ import React from 'react'
 function Navbar() {
   return (
     <>
-      <div className="navbar bg-gray-500 flex justify-between align-center">
+      <div className="navbar bg-gray-500 flex justify-between align-center sticky top-0 z-2 ">
         <div className="logo ">
             LiveLySync
         </div>

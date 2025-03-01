@@ -5,20 +5,20 @@ import "quill/dist/quill.snow.css"
 import "./style.css"
 
 const TOOLBAR_OPTIONS = [
-  [{ header: [1, 2, 3, 4, 5, 6, false] }], // Heading levels
-  [{ font: [] }], // Font selection
-  [{ size: ["small", false, "large", "huge"] }], // Font sizes
-  ["bold", "italic", "underline", "strike"], // Text styling
-  [{ color: [] }, { background: [] }], // Text & background colors
-  [{ script: "sub" }, { script: "super" }], // Subscript & Superscript
-  [{ list: "ordered" }, { list: "bullet" }], // Lists
-  [{ indent: "-1" }, { indent: "+1" }], // Indentation
-  [{ align: [] }], // Alignment
-  ["blockquote", "code-block"], // Block elements
-  ["image", "video", "link"], // Media options
-  ["clean"], // Remove formatting
-  
+  [{ header: [1, 2, 3, 4, 5, 6, false] }],
+  [{ font: [] }],
+  [{ size: ["small", false, "large", "huge"] }],
+  ["bold", "italic", "underline", "strike"],
+  [{ color: [] }, { background: [] }],
+  [{ script: "sub" }, { script: "super" }],
+  [{ list: "ordered" }, { list: "bullet" }],
+  [{ indent: "-1" }, { indent: "+1" }],
+  [{ align: [] }],
+  ["blockquote", "code-block"],
+  ["image", "video", "link"],
+  ["clean"]
 ];
+
 
 
 
