@@ -10,7 +10,7 @@ mongoose.connect(process.env.MONGODB_URI)
 
 const io = require("socket.io")(process.env.PORT, {
     cors: {
-        origin: "http://localhost:5173",
+        origin: "https://livelysync.vercel.app/",
         methods: ["GET", "POST"],
     },
 });
