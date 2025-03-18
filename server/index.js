@@ -3,17 +3,14 @@ const Document = require("./Document")
 const dotenv=require("dotenv");
 dotenv.config();
 
-mongoose.connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
+mongoose.connect(process.env.MONGODB_URI)
     .then(() => console.log("MongoDB connected successfully! 🚀"))
     .catch((err) => console.error("MongoDB connection error:", err));
 
 
 const io = require("socket.io")(process.env.PORT, {
     cors: {
-        origin: "http://localhost:5173",
+        origin: "https://livelysync.vercel.app/",
         methods: ["GET", "POST"],
     },
 });
