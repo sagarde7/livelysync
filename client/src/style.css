@@ -46,6 +46,7 @@ body {
 }
 
 @page {
+    size: A4;
     margin: 0rem;
 
 }
@@ -83,8 +84,25 @@ body {
     }
 
     .ql-editor {
-        color: #000000 !important;
-        margin-left: 0rem;
-        margin-right: 0rem;
+        break-before: auto;
+        break-after: auto;
+        break-inside: auto;
+        overflow: visible !important;
+        max-height: none !important;
+        height: auto !important;
+    }
+
+    .ql-editor p,
+    .ql-editor div,
+    .ql-editor span {
+        page-break-inside: auto;
+        break-inside: auto;
+    }
+
+    .ql-editor img,
+    .ql-editor table,
+    .ql-editor pre {
+        page-break-inside: avoid;
+        break-inside: avoid;
     }
 }

@@ -26,6 +26,16 @@ function TextEditor() {
         toolbar: TOOLBAR_OPTIONS,
         clipboard: {
           matchVisual: false,
+          matchers: [
+            [Node.ELEMENT_NODE, (node, delta) => {
+              delta.ops.forEach(op => {
+                if (op.attributes && op.attributes.color) {
+                  delete op.attributes.color; // Remove forced text color
+                }
+              });
+              return delta;
+            }]
+          ]
         }
       } 
     });
@@ -45,7 +55,7 @@ function TextEditor() {
 
   return (
     <>
-      <div id='container' className="relative p-4 "></div>
+      <div id='container' className="relative p-4 dark-theme"></div>
     </>
   );
 }
