@@ -2,6 +2,16 @@ const mongoose = require("mongoose");
 const Document = require("./Document")
 const dotenv=require("dotenv");
 dotenv.config();
+const cors = require("cors");
+
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://livelysync.vercel.app"], // Allow both local and deployed frontend
+    methods: ["GET", "POST"], // Allow necessary methods
+    credentials: true, // If using cookies or authentication
+  })
+);
+
 
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => console.log("MongoDB connected successfully! 🚀"))
