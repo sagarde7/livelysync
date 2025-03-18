@@ -38,8 +38,8 @@ function TextEditor() {
         e.preventDefault();
       }
     });
-  
-
+    
+    quill.focus();
 
   }, []);
 
