@@ -1,8 +1,7 @@
-import React from 'react'
-import Quill from 'quill'
-import { useEffect } from 'react'
-import "quill/dist/quill.snow.css"
-import "./style.css"
+import React, { useEffect } from 'react';
+import Quill from 'quill';
+import "quill/dist/quill.snow.css";
+import "./style.css";
 
 const TOOLBAR_OPTIONS = [
   [{ header: [1, 2, 3, 4, 5, 6, false] }],
@@ -19,25 +18,37 @@ const TOOLBAR_OPTIONS = [
   ["clean"]
 ];
 
-
-
-
 function TextEditor() {
-    useEffect(() => {
-    const quill = new Quill("#container", { theme: "snow", modules: { toolbar: TOOLBAR_OPTIONS } });
+  useEffect(() => {
+    const quill = new Quill("#container", { 
+      theme: "snow", 
+      modules: { 
+        toolbar: TOOLBAR_OPTIONS,
+        clipboard: {
+          matchVisual: false,
+        }
+      } 
+    });
 
-   
+    document.addEventListener('copy', (e) => {
+      const selection = document.getSelection();
+      if (selection) {
+        const text = selection.toString(); 
+        e.clipboardData.setData('text/plain', text); 
+        e.preventDefault();
+      }
+    });
+    document.querySelector(".ql-editor").setAttribute("data-placeholder", "Start typing here...");
+    document.querySelector(".ql-editor").classList.add("custom-placeholder");
+
 
   }, []);
 
- 
-
   return (
     <>
-      <div id='container'></div>
-      
+      <div id='container' className="relative p-4 "></div>
     </>
-  )
+  );
 }
 
-export default TextEditor
+export default TextEditor;
