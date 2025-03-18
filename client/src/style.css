@@ -70,7 +70,9 @@ body {
     .navbar {
         display: none !important;
     }
-
+    .chatbot{
+        display: none !important;
+    }
     .ql-toolbar.ql-snow {
         display: none !important;
     }
