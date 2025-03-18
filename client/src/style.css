@@ -30,16 +30,7 @@ body {
     border-top: 0.2rem solid gray;
     margin-top: 0.1rem;
 }
-.ql-editor::before {
-    content: attr(data-placeholder);
-    color: gray;
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    pointer-events: none;
-  }
 
-  
 .ql-toolbar.ql-snow {
     display: flex;
     align-items: center;

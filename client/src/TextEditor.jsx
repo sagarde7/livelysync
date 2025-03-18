@@ -38,8 +38,7 @@ function TextEditor() {
         e.preventDefault();
       }
     });
-    document.querySelector(".ql-editor").setAttribute("data-placeholder", "Start typing here...");
-    document.querySelector(".ql-editor").classList.add("custom-placeholder");
+  
 
 
   }, []);
