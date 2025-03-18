@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 const Document = require("./Document")
+const dotenv=require("dotenv");
+dotenv.config();
 
-mongoose.connect("mongodb://localhost/livelysync", {
+mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
@@ -9,7 +11,7 @@ mongoose.connect("mongodb://localhost/livelysync", {
     .catch((err) => console.error("MongoDB connection error:", err));
 
 
-const io = require("socket.io")(3001, {
+const io = require("socket.io")(process.env.PORT, {
     cors: {
         origin: "http://localhost:5173",
         methods: ["GET", "POST"],
