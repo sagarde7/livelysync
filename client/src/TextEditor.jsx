@@ -3,7 +3,7 @@ import Quill from "quill";
 import "quill/dist/quill.snow.css";
 import "./style.css";
 import io from "socket.io-client";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 
 const TOOLBAR_OPTIONS = [
   [{ header: [1, 2, 3, 4, 5, 6, false] }],
@@ -21,11 +21,10 @@ const TOOLBAR_OPTIONS = [
 ];
 
 function TextEditor() {
-  const {id: documentId}=useParams();
+  const { id: documentId } = useParams();
   const [socket, setSocket] = useState();
   const [quillback, setQuillback] = useState();
-  
-  
+
   useEffect(() => {
     const quill = new Quill("#container", {
       theme: "snow",
@@ -34,14 +33,17 @@ function TextEditor() {
         clipboard: {
           matchVisual: false,
           matchers: [
-            [Node.ELEMENT_NODE, (node, delta) => {
-              delta.ops.forEach((op) => {
-                if (op.attributes && op.attributes.color) {
-                  delete op.attributes.color; // Remove forced text color
-                }
-              });
-              return delta;
-            }],
+            [
+              Node.ELEMENT_NODE,
+              (node, delta) => {
+                delta.ops.forEach((op) => {
+                  if (op.attributes && op.attributes.color) {
+                    delete op.attributes.color; // Remove forced text color
+                  }
+                });
+                return delta;
+              },
+            ],
           ],
         },
       },
@@ -51,7 +53,6 @@ function TextEditor() {
     quill.disable();
     quill.setText("Loading....");
     setQuillback(quill);
-    
 
     const s = io("https://livelysyncingserver.onrender.com");
     setSocket(s);
@@ -64,17 +65,14 @@ function TextEditor() {
     if (socket == null || quillback == null) {
       return;
     }
-    socket.on("load-document",document=>{
+    socket.on("load-document", (document) => {
       quillback.setContents(document);
       quillback.enable();
       quillback.focus();
-    })
-    socket.emit("get-document",documentId)
-    return () => {
-      
-    }
-  }, [socket,quillback,documentId])
-  
+    });
+    socket.emit("get-document", documentId);
+    return () => {};
+  }, [socket, quillback, documentId]);
 
   useEffect(() => {
     if (socket == null || quillback == null) {
@@ -99,16 +97,14 @@ function TextEditor() {
     if (socket == null || quillback == null) {
       return;
     }
-    const interval=setInterval(()=>{
-      socket.emit("save-document",quillback.getContents())
-    },2000)
+    const interval = setInterval(() => {
+      socket.emit("save-document", quillback.getContents());
+    }, 2000);
 
-    return()=>{
+    return () => {
       clearInterval(interval);
-    }
-    
+    };
   }, [socket, quillback]);
-
 
   useEffect(() => {
     if (socket == null || quillback == null) {
@@ -116,7 +112,7 @@ function TextEditor() {
     }
 
     const handler = (delta) => {
-      quillback.updateContents(delta)
+      quillback.updateContents(delta);
     };
 
     socket.on("receive-changes", handler);
@@ -140,14 +136,14 @@ function TextEditor() {
 
     return () => {
       document.removeEventListener("copy", copyHandler);
+      const toolbar = document.querySelector(".ql-toolbar");
+      const editor = document.querySelector(".ql-container");
+      if (toolbar) toolbar.remove();
+      if (editor) editor.remove();
     };
   }, []);
 
-  return (
-    <>
-      <div id="container" className="relative p-4 dark-theme"></div>
-    </>
-  );
+  return <>{<div id="container" className="relative p-4 dark-theme"></div>}</>;
 }
 
 export default TextEditor;

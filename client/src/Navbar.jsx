@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import Chat from './Chat';
+import { useNavigate } from 'react-router-dom';
 
 function Navbar() {
+  const navigate = useNavigate();
   const [toggle, setToggle] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false); 
   
@@ -22,7 +24,11 @@ function Navbar() {
       <div className="navbar bg-gradient-to-r from-blue-800 to-gray-700 text-white flex justify-between items-center sticky top-0 z-15 px-6 py-3 shadow-md ">
         <div className="logo text-xl font-bold">LiveLySync - Real Time Documentation</div>
         <ul className="flex gap-4 mx-2 text-sm hover:cursor-pointer">
-        <li className="hover:text-blue-200 hover:underline underline-offset-4 transition-colors duration-200 cursor-pointer">Home</li>
+        <li className="hover:text-blue-200 hover:underline underline-offset-4 transition-colors duration-200 cursor-pointer"
+        onClick={()=>{
+          navigate("/")
+        }}
+        >Home</li>
           <li
             className="hover:text-blue-200 hover:underline underline-offset-4 transition-colors duration-200 cursor-pointer"
             onClick={() => window.print()}
