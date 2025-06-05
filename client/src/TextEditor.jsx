@@ -54,7 +54,7 @@ function TextEditor() {
     quill.setText("Loading....");
     setQuillback(quill);
 
-    const s = io("https://livelysyncingserver.onrender.com");
+    const s = io("https://livelysync-server.vercel.app");
     setSocket(s);
 
     return () => {
