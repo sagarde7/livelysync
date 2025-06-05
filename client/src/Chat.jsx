@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Send, Moon, Sun } from 'lucide-react';
 
-const BACKEND_URL = 'https://livelysyncai.onrender.com';
+const BACKEND_URL = 'https://livelysync-ai.vercel.app';
 
 function Chat({ setToggle }) {
   console.log("chat");
