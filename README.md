@@ -21,7 +21,7 @@ LivelySync is a real-time collaborative documentation platform built with the ME
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** React.js, Tailwind CSS, Vite, Zustand
+- **Frontend:** React.js, Tailwind CSS, CSS
 - **Backend:** Node.js, Express.js, Socket.io
 - **AI:** Gemini Flash 2.5 (Google AI)
 - **Hosting:** Vercel (client + AI), Render (server)
