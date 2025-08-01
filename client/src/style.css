@@ -47,6 +47,10 @@ body {
 .ql-toolbar.ql-snow .ql-picker-item {
   color: #333333;
 }
+.ql-toolbar.ql-snow .ql-picker-label:hover, 
+.ql-toolbar.ql-snow .ql-picker-item:hover{
+  background-color: transparent;
+}
  .ql-snow.ql-toolbar .ql-picker-label.ql-active{
   color: #000;
  }
