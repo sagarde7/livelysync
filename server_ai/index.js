@@ -17,7 +17,7 @@ app.listen(process.env.PORT, () => {
 });
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
 const SYSTEM_PROMPT = "You are an expert AI assistant with vast knowledge in Computer Science and Mathematics. You are helping a student with their studies. The student asks you a question and expects a crisp and concise answer."
 
